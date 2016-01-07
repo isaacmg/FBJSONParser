@@ -47,19 +47,11 @@ public class FBParsing {
 				String d = a.getString("description");
 				fWriter.println(d);
 			}
-			
+			fWriter.close();
 			
 			
 		}
 		
-		
-		
-		
-
-	
-
-	
-
 	}
 
 }
