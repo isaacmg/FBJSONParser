@@ -1,8 +1,9 @@
 package pr;
 
 import java.io.File;
-import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.MalformedURLException;
 
 import java.net.URISyntaxException;
@@ -21,9 +22,11 @@ public class FBParsing {
 		
 		
 		
-		String content = new String(Files.readAllBytes(Paths.get("response.json")));
-		System.out.println(content);
-	
+		String content = new String(Files.readAllBytes(Paths.get("file.json")));
+		
+		File finishedText = new File("finished.txt"); 
+		PrintWriter fWriter = new PrintWriter (new FileWriter(finishedText)); 
+				
 		
 		 
 		JSONObject o = new JSONObject(content);
@@ -34,9 +37,16 @@ public class FBParsing {
 			if (a.has("message"))
 			{
 			String w = a.getString("message");
-			System.out.println(w);
-			}
 			
+			System.out.println(w);
+			fWriter.println(w);
+
+			}
+			if(a.has("description"))
+			{
+				String d = a.getString("description");
+				fWriter.println(d);
+			}
 			
 			
 			
